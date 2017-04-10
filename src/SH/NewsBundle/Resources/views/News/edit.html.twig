@@ -1,0 +1,22 @@
+{# src/SH/NewsBundle/Resources/views/News/edit.html.twig #}
+
+{% extends "SHNewsBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier une news - {{ parent() }}
+{% endblock %}
+
+{% block shnews_body %}
+
+  <h2>Modifier une news</h2>
+
+  {{ include("SHNewsBundle:News:form.html.twig") }}
+
+  <p>
+    <a href="{{ path('sh_news_view', {'id': news.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la news
+    </a>
+  </p>
+
+{% endblock %}

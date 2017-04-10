@@ -1,0 +1,53 @@
+{# src/SH/NewsBundle/Resources/views/News/form.html.twig #}
+
+<h3>Formulaire de News</h3>
+
+<div class="well">
+	{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.title, "Titre", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      {# Affichage des erreurs du titre #}
+      {{ form_errors(form.title) }}
+
+		<div class="col-sm-4">
+			{# Génération de l'input. #}
+			{{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+		</div>
+    </div>
+
+    <div class="form-group">
+
+      {{ form_label(form.content, "Contenu", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.content) }}
+
+		<div class="col-sm-4">
+			{{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+		</div>
+    </div>
+
+    {#Si News déjà publié, on n'affiche plus le champs#}
+  {% if form.published is defined %}
+	{{ form_row(form.published) }}
+  {% endif %}
+
+  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+  {# Génération automatique des champs pas encore écrits. #}
+
+  {{ form_rest(form) }}
+
+  {% if news is defined %}
+      <img
+              src="{{ asset(news.image.webPath) }}"
+              alt="{{ news.image.alt }}"
+      />
+  {% endif %}
+
+  {{ form_end(form) }}
+</div>

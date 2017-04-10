@@ -1,0 +1,86 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DSHTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}Shinyshunters{% endblock %}</title>
+
+  {% block stylesheets %}
+    {# On charge le CSS de bootstrap depuis le site directement #}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  {% endblock %}
+</head>
+
+<body>
+  <header class="container">
+
+        <div class="navbar navbar-default">
+
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="#">ShinysHunters</a>
+
+            </div>
+
+            <ul class="nav navbar-nav">
+
+                <li class="active"><a href="#">Accueil</a></li>
+
+                <li><a href="#">Liens</a></li>
+
+                <li><a href="#">Témoignages</a></li>
+
+                <li><a href="#">Références</a></li>
+
+                <li><a href="#">Bibliographie</a></li>
+
+            </ul>
+
+        </div>
+	  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			Connecté en tant que {{ app.user.username }} -
+			<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+		{% else %}
+			<a href="{{ path('fos_user_security_login') }}">Connexion</a>
+            -
+			<a href="{{ path('fos_user_registration_register') }}">Inscription</a>
+		{% endif %}
+    </header>
+    <div class="container">
+        <nav class="row">
+          <div id="menu" class="col-md-3">
+            <h3>Les news</h3>
+            <ul class="nav nav-pills nav-stacked">
+              <li><a href="{{ path('sh_news_home') }}">Accueil</a></li>
+              {% if is_granted('ROLE_AUTEUR') %}
+                <li><a href="{{ path('sh_news_add') }}">Ajouter une news</a></li>
+              {% endif%}
+            </ul>
+
+            <h4>Dernières news</h4>
+            {{ render(controller("SHNewsBundle:News:menu", {'limit': 3})) }}
+          </div>
+          <div id="content" class="col-md-9">
+            {% block body %}
+            {% endblock %}
+          </div>
+        </nav>
+
+        <hr>
+    </div>
+    <footer>
+      <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
+    </footer>
+  </header>
+
+  {% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  {% endblock %}
+
+</body>
+</html>

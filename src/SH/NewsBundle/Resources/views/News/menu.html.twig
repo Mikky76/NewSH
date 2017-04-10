@@ -1,0 +1,11 @@
+{# src/SH/NewsBundle/Resources/views/News/menu.html.twig #}
+
+<ul class="nav nav-pills nav-stacked">
+  {% for news in listNews %}
+    <li>
+      <a href="{{ path('sh_news_view', {'id': news.id}) }}">
+	  {{ news.title }}
+	  </a>
+    </li>
+  {% endfor %}
+</ul>

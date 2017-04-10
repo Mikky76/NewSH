@@ -1,0 +1,12 @@
+# src/SH/NewsBundle/Resources/config/services.yml
+
+services:
+    sh_news.antispam:
+        class: SH\NewsBundle\Antispam\SHAntispam
+        arguments: ['@mailer', %locale%, 50]
+
+    sh_news.validator.antiflood:
+        class: SH\NewsBundle\Validator\AntifloodValidator
+        arguments: ['@request_stack', '@doctrine.orm.entity_manager']
+        tags:
+            - { name: validator.constraint_validator, alias: sh_news_antiflood }    

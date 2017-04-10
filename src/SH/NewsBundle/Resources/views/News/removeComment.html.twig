@@ -1,0 +1,23 @@
+{# src/SH/NewsBundle/Resources/views/News/removeComment.html.twig #}
+{% extends "SHNewsBundle::layout.html.twig" %}
+{% block title %}
+Supprimer un commentaire - {{ parent() }}
+{% endblock %}
+{% block shnews_body %}
+<h2>Supprimer un commentaire</h2>
+<p>
+    Etes-vous certain de vouloir supprimer le commentaire suivant ?
+</p>
+<div class="well">
+    {{ comment.content }}
+</div>
+{# On met l'id de la News dans la route de l'action du formulaire #}
+<form action="{{ path('sh_news_remove_comment', {'id': comment.id}) }}" method="post">
+    <a href="{{ path('sh_news_view', {'id': comment.news.id}) }}" class="btn">
+        <i class="icon-chevron-left"></i>
+        Retour à la News
+    </a>
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {{ form_rest(form) }}
+</form>
+{% endblock %}

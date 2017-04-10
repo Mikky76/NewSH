@@ -1,0 +1,42 @@
+# src/SH/NewsBundle/Resources/config/routing.yml
+sh_news_home:
+    path:  /{page}
+    defaults:
+        _controller: SHNewsBundle:News:index
+        page: 1
+    requirements:
+        page: \d+
+
+sh_news_add:
+    path:      /news/add
+    defaults:  { _controller: SHNewsBundle:News:add }
+
+sh_news_view:
+    path:      /news/{id}
+    defaults:  { _controller: SHNewsBundle:News:view }
+    requirements:
+        page: \d+
+
+sh_news_edit:
+    path:      /news/edit/{id}
+    defaults:  { _controller: SHNewsBundle:News:edit }
+    requirements:
+        page: \d+
+        
+sh_news_delete:
+    path:      /news/delete/{id}
+    defaults:  { _controller: SHNewsBundle:News:delete }
+    requirements:
+        page: \d+
+
+sh_news_add_comment:
+    path: /add/{id}/comment
+    defaults: { _controller: SHNewsBundle:News:addComment }
+    requirements:
+        id: \d+
+
+sh_news_remove_comment:
+    path: /remove/comment/{id}
+    defaults: { _controller: SHNewsBundle:News:removeComment }
+    requirements:
+        id: \d+
