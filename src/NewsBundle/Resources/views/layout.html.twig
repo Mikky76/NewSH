@@ -1,0 +1,17 @@
+{# src/NewsBundle/Resources/views/layout.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - News 
+{% endblock %}
+
+{% block body %}
+
+  <hr>
+
+  {# Bloc pour les vues #}
+  {% block shnews_body %}
+  {% endblock %}
+
+{% endblock %}

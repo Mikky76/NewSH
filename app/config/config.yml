@@ -2,8 +2,8 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@SHNewsBundle/Resources/config/services.yml" }
-    - { resource: "@SHUserBundle/Resources/config/services.yml" }
+    - { resource: "@NewsBundle/Resources/config/services.yml" }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -80,11 +80,11 @@ stof_doctrine_extensions:
 fos_user:
     db_driver:     orm
     firewall_name: main
-    user_class:    SH\UserBundle\Entity\User
+    user_class:    UserBundle\Entity\User
     from_email:
         address: "noreply@shinyshunters.fr"
         sender_name: "No Reply"
-        
+
 # liip/imagine-bundle configuration
 liip_imagine:
     filter_sets:

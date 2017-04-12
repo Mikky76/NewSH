@@ -1,6 +1,6 @@
 sh_news:
-    resource: "@SHNewsBundle/Resources/config/routing.yml"
-    prefix:   /
+    resource: "@NewsBundle/Controller/"
+    type:     annotation
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

@@ -1,0 +1,22 @@
+{# src/NewsBundle/Resources/views/News/add.html.twig #}
+
+{% extends "NewsBundle::layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - Ajouter une news
+{% endblock %}
+
+{% block shnews_body %}
+
+  <h2>Ajouter une news</h2>
+
+  {{ include("NewsBundle:News:form.html.twig") }}
+
+  <p>
+    <a href="{{ path('sh_news_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à l'accueil
+    </a>
+  </p>
+
+{% endblock %}
