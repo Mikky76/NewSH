@@ -2,48 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e47f5ec-6c3d-4ac4-a177-dbb65e5662a1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Antispam/SHAntispam.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Controller/NewsController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/DependencyInjection/SHNewsExtension.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Entity/Comment.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Entity/CommentRepository.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Entity/Image.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Entity/ImageRepository.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Entity/News.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Entity/NewsRepository.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Form/CommentType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Form/ImageType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Form/NewsEditType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Form/NewsType.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/config/routing.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/config/services.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/views/News/add.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/views/News/comment.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/views/News/delete.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/views/News/edit.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/views/News/form.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/views/News/index.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/views/News/menu.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/views/News/removeComment.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/views/News/view.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Resources/views/layout.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/SHNewsBundle.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Tests/Controller/DefaultControllerTest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Validator/Antiflood.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/NewsBundle/Validator/AntifloodValidator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/UserBundle/DataFixtures/ORM/LoadUser.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/UserBundle/Entity/User.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/UserBundle/Repository/UserRepository.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/UserBundle/Resources/config/services.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/UserBundle/Resources/views/layout.html.twig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SH/UserBundle/SHUserBundle.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/NewSH.iml" afterPath="$PROJECT_DIR$/.idea/NewSH.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/routing.yml" afterPath="$PROJECT_DIR$/app/config/routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/security.yml" afterPath="$PROJECT_DIR$/app/config/security.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NewsBundle/Entity/Image.php" afterPath="$PROJECT_DIR$/src/NewsBundle/Entity/Image.php" />
     </list>
     <ignored path="NewSH.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -132,13 +91,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AntifloodValidator.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/NewsBundle/Validator/AntifloodValidator.php">
+      <file leaf-file-name="Image.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/NewsBundle/Entity/Image.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46153846">
-              <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.70197487">
+              <caret line="210" column="24" selection-start-line="210" selection-start-column="24" selection-end-line="210" selection-end-column="24" />
               <folding>
-                <element signature="e#1180#1200#1#PHP" expanded="true" />
+                <element signature="e#68#100#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -193,7 +152,6 @@
         <option value="$PROJECT_DIR$/src/SH/NewsBundle/NewsBundle.php" />
         <option value="$PROJECT_DIR$/src/NewsBundle/Entity/CommentRepository.php" />
         <option value="$PROJECT_DIR$/src/NewsBundle/Entity/Comment.php" />
-        <option value="$PROJECT_DIR$/src/NewsBundle/Entity/Image.php" />
         <option value="$PROJECT_DIR$/src/NewsBundle/Entity/NewsRepository.php" />
         <option value="$PROJECT_DIR$/src/NewsBundle/DependencyInjection/NewsExtension.php" />
         <option value="$PROJECT_DIR$/src/NewsBundle/Controller/CommentsController.php" />
@@ -210,6 +168,7 @@
         <option value="$PROJECT_DIR$/src/NewsBundle/Resources/views/News/form.html.twig" />
         <option value="$PROJECT_DIR$/src/NewsBundle/Resources/views/News/index.html.twig" />
         <option value="$PROJECT_DIR$/src/NewsBundle/Validator/AntifloodValidator.php" />
+        <option value="$PROJECT_DIR$/src/NewsBundle/Entity/Image.php" />
       </list>
     </option>
   </component>
@@ -501,14 +460,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24054463" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.8052373" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8052373" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -934,16 +893,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NewsBundle/Entity/Image.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.55655295">
-          <caret line="174" column="23" selection-start-line="174" selection-start-column="23" selection-end-line="174" selection-end-column="23" />
-          <folding>
-            <element signature="e#68#100#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NewsBundle/Entity/ImageRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06104129">
@@ -1018,6 +967,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/NewsBundle/Validator/AntifloodValidator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5421903">
+          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+          <folding>
+            <element signature="e#1180#1200#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/NewsBundle/Controller/CommentsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.2727275">
@@ -1032,12 +991,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NewsBundle/Validator/AntifloodValidator.php">
+    <entry file="file://$PROJECT_DIR$/src/NewsBundle/Entity/Image.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46153846">
-          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.70197487">
+          <caret line="210" column="24" selection-start-line="210" selection-start-column="24" selection-end-line="210" selection-end-column="24" />
           <folding>
-            <element signature="e#1180#1200#1#PHP" expanded="true" />
+            <element signature="e#68#100#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
