@@ -8,56 +8,56 @@
 
 {% block shnews_body %}
 
-  {% if news.image is not null %}
-		<img
-		  src="{{ news.image.webPath | imagine_filter('header_news')}}"
-		  alt="{{ news.image.alt }}"
-		/>
-  {% endif %}
-  <h2>{{ news.title }}</h2>
-  <i>Par {{ news.author }}, le {{ news.date|date('d/m/Y') }}</i>
+    {% if news.image is not null %}
+          <img
+            src="{{ news.image.webPath | imagine_filter('header_news')}}"
+            alt="{{ news.image.alt }}"
+          />
+    {% endif %}
+    <h2>{{ news.title }}</h2>
+    <i>Par {{ news.author }}, le {{ news.date|date('d/m/Y') }}</i>
 
-  <div class="well">
-    {{ news.content }}
-  </div>
-
-  <p>
-    <a href="{{ path('sh_news_home') }}" class="btn btn-default">
-      <i class="glyphicon glyphicon-chevron-left"></i>
-      Retour à la liste
-    </a>
-    <a href="{{ path('sh_news_edit', {'id': news.id}) }}" class="btn btn-default">
-      <i class="glyphicon glyphicon-edit"></i>
-      Modifier la news
-    </a>
-    <a href="{{ path('sh_news_delete', {'id': news.id}) }}" class="btn btn-danger">
-      <i class="glyphicon glyphicon-trash"></i>
-      Supprimer la news
-    </a>
-  </p>
-
-  <h3>Commentaires</h3>
-
-  <h3>Poster un nouveau commentaire</h3>
-  <form method="post" action="{{ path('sh_news_add_comment', {'id': news.id}) }}">
-    {#{{ form_widget(form) }}#}
-    <div class="col-sm-4">
-      {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
-    </div>
     <p>
-      <input type="submit" value="Ajouter" class="btn btn-primary" />
+      {{ news.content | raw }}
     </p>
-    {{ form_rest(form) }}
-  </form>
-  <hr />
-  <div>
-    {% for comment in comments %}
+
+    <p>
+      <a href="{{ path('sh_news_home') }}" class="btn btn-default">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour à la liste
+      </a>
+      <a href="{{ path('sh_news_edit', {'id': news.id}) }}" class="btn btn-default">
+        <i class="glyphicon glyphicon-edit"></i>
+        Modifier la news
+      </a>
+      <a href="{{ path('sh_news_delete', {'id': news.id}) }}" class="btn btn-danger">
+        <i class="glyphicon glyphicon-trash"></i>
+        Supprimer la news
+      </a>
+    </p>
+
+    <h3>Commentaires</h3>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <form method="post" action="{{ path('sh_news_add_comment', {'id': news.id}) }}">
+          {#{{ form_widget(form) }}#}
+          <div class="col-sm-8">
+            {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+          </div>
+          <p>
+            <input type="submit" value="Ajouter" class="btn btn-primary" />
+          </p>
+          {{ form_rest(form) }}
+        </form>
+    {% endif %}
+    <hr />
     <div>
-    {% include "NewsBundle:News:comment.html.twig" %}
-      <hr />
-    </div>
-    {% else %}
-      <p>Pas encore de commentaire.</p>
-    {% endfor %}
+      {% for comment in comments %}
+          <div>
+              {% include "NewsBundle:News:comment.html.twig" %}
+            <hr />
+          </div>
+          {% else %}
+            <p>Pas encore de commentaire.</p>
+      {% endfor %}
     </div>
 {% endblock %}

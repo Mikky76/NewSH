@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use NewsBundle\Form\ImageType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class NewsType extends AbstractType
 {
@@ -24,8 +25,8 @@ class NewsType extends AbstractType
         $builder
 		  ->add('date',      DateType::class)
 		  ->add('title')
-		  ->add('content')
-		  ->add('image',    ImageType::class)
+		  ->add('content', CKEditorType::class)
+		  //->add('image',    ImageType::class)
 		  ->add('save',      SubmitType::class, array('label' => 'Valider'))
         ;
 		

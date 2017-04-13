@@ -96,3 +96,9 @@ liip_imagine:
         header_news:
             filters:
                 thumbnail: { size: [1024, 340], mode: outbound }
+
+# Ivory/ckeditor-bundle configuration
+ivory_ck_editor:
+    configs:
+        my_config:
+            language: fr

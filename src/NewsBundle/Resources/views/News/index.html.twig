@@ -15,8 +15,10 @@
         <a href="{{ path('sh_news_view', {'id': news.id}) }}" class="list-group-item">
             <h4 class="list-group-item-heading">{{ news.title }}</h4>
             <p class="list-group-item-text pull-right">Résumé</p>
-            <img src="{{ news.image.webPath | imagine_filter('miniature')}}"
-                 alt="{{ news.image.alt }}">
+            {% if news.image is not null %}
+                <img src="{{ news.image.webPath | imagine_filter('miniature')}}"
+                     alt="{{ news.image.alt }}">
+            {% endif %}
         </a>
           {#<li>#}
             {#<a href="{{ path('sh_news_view', {'id': news.id}) }}">#}
