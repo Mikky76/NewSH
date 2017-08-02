@@ -11,68 +11,53 @@
   {% block stylesheets %}
     {# On charge le CSS de bootstrap depuis le site directement #}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    {% stylesheets 'bundles/news/css/main.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
   {% endblock %}
 </head>
 
 <body>
   <header class="container">
+        <div class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ path('sh_home') }}">ShinysHunters</a>
+                </div>
 
-        <div class="navbar navbar-default">
-
-            <div class="navbar-header">
-
-                <a class="navbar-brand" href="#">ShinysHunters</a>
-
-            </div>
-
-            <ul class="nav navbar-nav">
-
-                <li class="active"><a href="#">Accueil</a></li>
-
-                <li><a href="#">Liens</a></li>
-
-                <li><a href="#">Témoignages</a></li>
-
-                <li><a href="#">Références</a></li>
-
-                <li><a href="#">Bibliographie</a></li>
-
-            </ul>
-
-        </div>
-	  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-			Connecté en tant que {{ app.user.username }} -
-			<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-		{% else %}
-			<a href="{{ path('fos_user_security_login') }}">Connexion</a>
-            -
-			<a href="{{ path('fos_user_registration_register') }}">Inscription</a>
-		{% endif %}
-    </header>
-    <div class="container">
-        <div class="row">
-            <nav>
-              <div id="menu" class="col-md-2">
-                <h3>Les news</h3>
-                <ul class="nav nav-pills nav-stacked">
-                  <li><a href="{{ path('sh_news_home') }}">Accueil</a></li>
-                  {% if is_granted('ROLE_AUTOR') %}
-                    <li><a href="{{ path('sh_news_add') }}">Ajouter une news</a></li>
-                  {% endif%}
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ path('sh_home') }}"><span class="glyphicon glyphicon-home"></span> Actualité</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-star"></span> Recensement</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Events</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }} <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
+                        <li><a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-log-in"></span> Connexion </a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </header>
 
-                <h4>Dernières news</h4>
-                {{ render(controller("NewsBundle:News:menu", {'limit': 3})) }}
-              </div>
-            </nav>
-            <div id="content" class="col-md-8">
+    <div class="container">
+
+            <div id="content" class="col-md-10">
                 {% block body %}
                 {% endblock %}
             </div>
+
             <div class="col-sm-2">
-                <aside>
-                    Aside test
-                </aside>
+                <a class="twitter-timeline" data-width="300" data-height="400" data-dnt="false" data-theme="dark" data-link-color="#E81C4F" href="https://twitter.com/Shinys_Hunters">Tweets by Shinys_Hunters</a>
+                <a href="https://twitter.com/shinys_hunters" class="twitter-follow-button" data-size="large" data-dnt="true" data-show-count="false">Suivez @shinys_hunters</a>
             </div>
         </div>
     </div>
@@ -88,6 +73,7 @@
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   {% endblock %}
 
 </body>

@@ -1,6 +1,13 @@
+core:
+    resource: "@CoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    defaults: { _controller: NewsBundle:News:index }
+
 sh_news:
     resource: "@NewsBundle/Controller/"
     type:     annotation
+    prefix:   /news
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

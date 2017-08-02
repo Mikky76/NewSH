@@ -1,5 +1,5 @@
 <?php
-// src/NewsBundle/Controller/NewsController.php
+// srcBundle/ControllerController.php
 
 namespace NewsBundle\Controller;
 
@@ -30,7 +30,7 @@ class NewsController  extends Controller
 
 		// Ici je fixe le nombre d'annonces par page à 3
 		// Mais bien sûr il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
-		$nbPerPage = 3;
+		$nbPerPage = 4;
 	
     // On récupère l'objet Paginator
 		$listNews = $this->getDoctrine()
@@ -58,28 +58,11 @@ class NewsController  extends Controller
 			'page'     => $page
 		));
     }
-	
-	public function menuAction($limit)
-	{
-		$listNews = $this->getDoctrine()
-		  ->getManager()
-		  ->getRepository('NewsBundle:News')
-		  ->findBy(
-				array(),                 // Pas de critère
-				array('date' => 'desc'), // On trie par date décroissante
-				$limit,                  // On sélectionne $limit annonces
-				0                        // À partir du premier
-		);
-
-		return $this->render('NewsBundle:News:menu.html.twig', array(
-		'listNews' => $listNews
-		));
-	}
 
 	/**
-	 * Matches /news/ exactly
+	 * Matches / exactly
 	 *
-	 * @Route("/news/{id}", name="sh_news_view", requirements={"id": "\d+"})
+	 * @Route("/view/{id}", name="sh_news_view", requirements={"id": "\d+"})
 	 */
 	public function viewAction($id, Form $form = null)
 	{
@@ -111,7 +94,7 @@ class NewsController  extends Controller
 	/**
 	 * @Security("has_role('ROLE_AUTOR')")
 	 *
-	 * @Route("/news/add", name="sh_news_add")
+	 * @Route("/add", name="sh_news_add")
 	 */
     public function addAction(Request $request)
 	{
@@ -143,7 +126,7 @@ class NewsController  extends Controller
 	/**
 	 * @Security("has_role('ROLE_AUTOR')")
 	 *
-	 * @Route("/news/edit/{id}", name="sh_news_edit", requirements={"id": "\d+"})
+	 * @Route("/edit/{id}", name="sh_news_edit", requirements={"id": "\d+"})
 	 */
 	public function editAction($id, Request $request)
 	{
@@ -174,7 +157,7 @@ class NewsController  extends Controller
 	/**
 	 * @Security("has_role('ROLE_ADMIN')")
 	 *
-	 * @Route("/news/delete/{id}", name="sh_news_delete", requirements={"id": "\d+"})
+	 * @Route("/delete/{id}", name="sh_news_delete", requirements={"id": "\d+"})
 	 */
 	public function deleteAction($id, Request $request)
 	{

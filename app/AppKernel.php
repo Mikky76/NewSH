@@ -21,6 +21,8 @@ class AppKernel extends Kernel
 			new FOS\UserBundle\FOSUserBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new CoreBundle\CoreBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
