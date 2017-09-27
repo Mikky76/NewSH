@@ -23,6 +23,9 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new CoreBundle\CoreBundle(),
+            new ShinyBundle\ShinyBundle(),
+            new Bmatzner\JQueryUIBundle\BmatznerJQueryUIBundle(),
+            new SC\DatetimepickerBundle\SCDatetimepickerBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

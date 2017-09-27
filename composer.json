@@ -34,7 +34,9 @@
         "egeloen/ckeditor-bundle": "^4.0",
         "symfony/assetic-bundle": "^2.7.1",
         "leafo/scssphp": "~0.6",
-        "patchwork/jsqueeze": "~1.0"
+        "patchwork/jsqueeze": "~1.0",
+        "bmatzner/jquery-ui-bundle": "*",
+        "stephanecollot/datetimepicker-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

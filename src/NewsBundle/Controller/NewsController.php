@@ -20,44 +20,44 @@ class NewsController  extends Controller
 {
 	/**
 	 *
-	 * @Route("/{page}", name="sh_news_home", requirements={"page": "\d+"})
+	 * @Route("/News/{page}", name="sh_news_home", requirements={"page": "\d+"})
 	 */
 	public function indexAction($page = 1)
-    {
+	{
 		if ($page < 1) {
-		  throw $this->createNotFoundException('Page "'.$page.'" inexistante!');
+			throw $this->createNotFoundException('Page "'.$page.'" inexistante!');
 		}
 
 		// Ici je fixe le nombre d'annonces par page à 3
 		// Mais bien sûr il faudrait utiliser un paramètre, et y accéder via $this->container->getParameter('nb_per_page')
 		$nbPerPage = 4;
-	
-    // On récupère l'objet Paginator
+
+		// On récupère l'objet Paginator
 		$listNews = $this->getDoctrine()
-		->getManager()
-		->getRepository('NewsBundle:News')
-		->getNews($page, $nbPerPage)
+			->getManager()
+			->getRepository('NewsBundle:News')
+			->getNews($page, $nbPerPage)
 		;
 
 		// On calcule le nombre total de pages
 		$nbPages = ceil(count($listNews)/$nbPerPage);
-		
+
 		//S'il y a pas de News, par défaut, $nbPages est à 1
 		if ($nbPages == 0) {
 			$nbPages = 1;
 		}
-		
+
 		// Si la page n'existe pas, on retourne une 404
 		if ($page > $nbPages) {
 			throw $this->createNotFoundException("La page ".$page." n'existe pas.");
 		}
-		
-        return $this->render('NewsBundle:News:index.html.twig', array(
+
+		return $this->render('NewsBundle:News:index.html.twig', array(
 			'listNews' => $listNews,
 			'nbPages'  => $nbPages,
 			'page'     => $page
 		));
-    }
+	}
 
 	/**
 	 * Matches / exactly
@@ -179,7 +179,7 @@ class NewsController  extends Controller
 
 		  $request->getSession()->getFlashBag()->add('info', "La News a bien été supprimée.");
 
-		  return $this->redirect($this->generateUrl('sh_news_home'));
+		  return $this->redirect($this->generateUrl('sh_home'));
 		}
 
 		// Si la requête est en GET, on affiche une page de confirmation avant de supprimer

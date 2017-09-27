@@ -1,0 +1,154 @@
+{# src/SH/NewsBundle/Resources/view/News/view.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/woocommerce-FlexSlider-0d95828/flexslider.css' ) }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/Nanogallery2/css/nanogallery2.css' ) }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/shiny.css' ) }}"/>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ shiny.pokemon.name }} de {{ shiny.user }}
+{% endblock %}
+
+{% block body %}
+
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for flash in flashes %}
+            <div class="alert alert-{{ label }}">
+                {{ flash }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    
+    <h2>{{ shiny.pokemon.name }} <small><i>de {{ shiny.user }}</i></small>
+        <a href="{{ path('sh_shiny_delete', {'id': shiny.id}) }}" class="btn btn-danger pull-right">
+            <span class="glyphicon glyphicon-trash"></span>
+        </a>
+        <a href="{{ path('sh_shiny_edit', {'id': shiny.id}) }}" class="btn btn-default pull-right">
+            <span class="glyphicon glyphicon-edit"></span>
+        </a>
+    </h2>
+
+    <div class="row col-lg-12">
+        <div class="col-md-6">
+            <div id="slider" class="flexslider">
+                <ul class="slides">
+                    {% if shiny.pictures is not empty %}
+                        {% for picture in shiny.pictures %}
+                            <li>
+                                <img class="img-rounded" src="{{ picture.url }}"/>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li>
+                            <img class="img-responsive" src="{{ asset('media/img/icones/missing_image.png') }}">
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="preview col-md-6">
+            {% if shiny.nickname %}
+                <h4>Surnom <small>{{ shiny.nickname }}</small></h4>
+            {% endif %}
+            <h4>Version <small>{{ shiny.version.name }}</small></h4>
+            <h4>Localisation <small>{{ shiny.location.name }}</small></h4>
+            <h4>Capturé le <small>{{ shiny.date|date('d/m/Y à H:i') }}</small></h4>
+            <h4>Niveau <small>{{ shiny.level }}</small></h4>
+            <h4>Sexe <small>{{ shiny.sexe|raw }}</small></h4>
+            <h4>Nature <small>{{ shiny.nature.name }}</small></h4>
+            <h4>Ball <small>{{ shiny.pokeball.name }}</small> <img src="{{ asset(shiny.pokeball.url) }}"/></h4>
+            <h4>Méthode <small>{{ shiny.methode.name }}</small></h4>
+            <h4>Nombre <small>{{ shiny.number }}</small></h4>
+        </div>
+    </div>
+    <div class="preview col-lg-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#recit" data-toggle="tab">Récit</a></li>
+            <li><a href="#galerie" data-toggle="tab">Galerie</a></li>
+            <li><a id="video" href="#videos" data-toggle="tab">Vidéos</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="recit">
+                <p class="justify">
+                    {% if shiny.recit %}
+                        {{ shiny.recit | raw }}
+                    {% else %}
+                        Pas de récit...
+                    {% endif %}
+                </p>
+            </div>
+            <div class="tab-pane" id="galerie">
+                {% if shiny.pictures is not empty %}
+                    <div data-nanogallery2='{
+                    "thumbnailWidth": "200",
+                    "thumbnailHeight": "auto"
+                    }'>
+                        {% for picture in shiny.pictures %}
+                        <a href="{{ picture.url }}" data-ngthumb="{{ picture.url }}"></a>
+                            {% endfor %}
+                    </div>
+                {% else %}
+                    <p>Pas de photos...</p>
+                {% endif %}
+            </div>
+            <div class="tab-pane" id="videos" align="center">
+                    {% if shiny.videos is not empty %}
+                        <div id="slider2" class="flexslider">
+                            <ul class="slides">
+                                {% for video in shiny.videos %}
+                                    {% set url = video.url|split('?v=') %}
+                                    {# Si pas de séparation en deux, ce n'est pas une vidéo Youtube #}
+                                    {% if url[0] != video.url %}
+                                        <li>
+                                            <iframe id="player_{{ loop.index }}" src="http://www.youtube.com/embed/{{ url[1] }}" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <img class="img-responsive" src="{{ asset('media/img/icones/novideo.jpg') }}"/>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% else %}
+                        <p>Pas de vidéo...</p>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+      <a href="{{ path('sh_shiny_collection') }}" class="btn btn-default">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour
+      </a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/js/jquery-3.2.1.min.js' ) }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/woocommerce-FlexSlider-0d95828/jquery.flexslider.js' ) }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/Nanogallery2/jquery.nanogallery2.core.js' ) }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#slider').flexslider({
+                animation: "slide"
+            });
+        });
+        $('#video').click( function (e) {
+            e.preventDefault();
+            $('#slider2').flexslider({
+                animation: "slide",
+                animationLoop: false,
+                slideshow: false,
+                itemMargin: 5,
+                video: true
+            });
+        });
+    </script>
+{% endblock %}

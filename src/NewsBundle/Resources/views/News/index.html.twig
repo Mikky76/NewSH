@@ -1,4 +1,4 @@
-{# src/NewsBundle/Resources/views/News/index.html.twig #}
+{# src/NewsBundle/Resources/views/index.html.twig #}
 
 {% extends "NewsBundle::layout.html.twig" %}
 
@@ -8,8 +8,8 @@
 
 {% block shnews_body %}
 
-    <h2>Liste des news</h2>
-    <div class="row col col-md-12">
+    <h2>Actualité</h2>
+    <div class="row">
         {% for news in listNews %}
         <article class="col-sm-6 separator-right">
             <a href="{{ path('sh_news_view', {'id': news.id}) }}">
@@ -21,7 +21,6 @@
                 <div class="overlay">
                     <h4>{{ news.title }}</h4>
                 </div>
-                {#<p class="list-group-item-text pull-right">Résumé</p>#}
             </a>
         </article>
           {#<li>#}
@@ -39,7 +38,7 @@
 	  {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
 	  {% for p in range(1, nbPages) %}
 		<li{% if p == page %} class="active"{% endif %}>
-		  <a href="{{ path('sh_news_home', {'page': p}) }}">{{ p }}</a>
+		  <a href="{{ path('sh_home', {'page': p}) }}">{{ p }}</a>
 		</li>
 	  {% endfor %}
 	</ul>

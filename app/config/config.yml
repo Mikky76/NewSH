@@ -5,6 +5,7 @@ imports:
     - { resource: "@NewsBundle/Resources/config/services.yml" }
     - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@CoreBundle/Resources/config/services.yml" }
+    - { resource: "@ShinyBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -100,12 +101,17 @@ liip_imagine:
 
 # Ivory/ckeditor-bundle configuration
 ivory_ck_editor:
+    default_config: 'my_config'
     configs:
         my_config:
             language: fr
+            toolbar: 'standard'
 
 assetic:
   debug:          '%kernel.debug%'
   use_controller: '%kernel.debug%'
   filters:
           cssrewrite: ~
+
+sc_datetimepicker:
+    picker: ~

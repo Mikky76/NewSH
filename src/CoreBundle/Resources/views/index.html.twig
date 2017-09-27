@@ -1,0 +1,39 @@
+{# src/CoreBundle/Resources/views/index.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - Recensement
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Bienvenue!</h2>
+            <p>Vous voulez tout savoir sur les shinies ?? Vous êtes au bon endroit !
+                Ce site est destiné à TOUT DIRE sur les Pokémon shinies dits chromatiques !!
+                Bonne visite ! </p>
+            <p><a class="btn btn-primary btn-lg" href="http://shinyshunters.fr-bb.com/" role="button"> Rejoignez notre communauté!</a></p>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2>ShinyDex</h2>
+                <p>Vous en avez rêver! Découvrez tous les chromatiques que possèdent nos membres.</p>
+                <a class="btn btn-primary" href="{{ path('sh_shiny_dex') }}" role="button"> Voir le ShinyDex »</a>
+            </div>
+            <div class="col-md-4">
+                <h2>Recensement</h2>
+                <p>Vous en avez pleins de chromatiques? Partage-les avec nous.</p>
+                <a class="btn btn-primary" href="{{ path('sh_shiny') }}" role="button"> Le Recensement c'est par ici »</a>
+            </div>
+            <div class="col-md-4">
+                <h2>???</h2>
+                <p>On a pas encore décidé ce qu'on va mettre ici...</p>
+                <a class="btn btn-primary" href="#" role="button"> NoWhere »</a>
+            </div>
+        </div>
+
+
+{% endblock %}

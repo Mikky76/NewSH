@@ -1,0 +1,4 @@
+services:
+#    shiny.example:
+#        class: ShinyBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

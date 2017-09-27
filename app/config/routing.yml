@@ -1,8 +1,12 @@
-core:
+sh_shiny:
+    resource: "@ShinyBundle/Controller"
+    type:     annotation
+    prefix:   /recensement
+
+sh_home:
     resource: "@CoreBundle/Controller/"
     type:     annotation
     prefix:   /
-    defaults: { _controller: NewsBundle:News:index }
 
 sh_news:
     resource: "@NewsBundle/Controller/"

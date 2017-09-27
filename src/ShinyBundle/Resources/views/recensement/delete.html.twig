@@ -1,0 +1,27 @@
+{# src/SH/ShinyBundle/Resources/views/delete.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - Supprimer un shiny
+{% endblock %}
+
+{% block body %}
+
+  <h2>Supprimer un shiny</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer votre shiny "{{ shiny.pokemon.name }}" ?
+  </p>
+  
+  <form action="{{ path('sh_shiny_delete', {'id': shiny.id}) }}" method="post">
+    <a href="{{ path('sh_shiny_view', {'id': shiny.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la shiny
+    </a>
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {# génération du champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

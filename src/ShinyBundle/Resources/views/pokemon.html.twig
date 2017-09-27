@@ -1,0 +1,116 @@
+{# src/SH/ShinyBundle/Resources/view/Pokemon.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/Nanogallery2/css/nanogallery2.css' ) }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/shiny.css' ) }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/DataTables/datatables.min.css') }}"/>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ pokemon.name }}
+{% endblock %}
+
+{% block body %}
+    
+    <h2>{{ pokemon.name }}</h2>
+
+    <div class="preview col-lg-12">
+        <table class="table table-sprite table-bordered table-striped table-condensed table-responsive">
+
+            <h4>Sprites</h4>
+
+            <thead>
+            <tr>
+                {% for sprite in pokemon.sprites %}
+                    <th>{{ sprite.generation.generation }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                {% for sprite in pokemon.sprites %}
+                    <td style="vertical-align: middle;">
+                        <img class="img-responsive sprite" src="{{ asset(sprite.url) }}"/>
+                    </td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="preview col-lg-12">
+        <table id="table-users" class="table table-bordered table-striped table-condensed">
+
+            <h4>Les membres qui le possèdent</h4>
+            <thead>
+            <tr>
+                <th>Membres</th>
+                <th>Versions</th>
+                <th>Méthodes</th>
+                <th>Nombres</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for shiny in pokemon.shinies %}
+                <tr>
+                    <td>{{ shiny.user }}</td>
+                    <td>{{ shiny.version.name }}</td>
+                    <td>{{ shiny.methode.name }}</td>
+                    <td>{{ shiny.number }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+       </table>
+    </div>
+
+    <div class="preview col-lg-12">
+        <h4>Galerie</h4>
+        {% if pokemon.shinies is not empty %}
+            <div data-nanogallery2='{
+                    "thumbnailWidth": "200",
+                    "thumbnailHeight": "auto",
+                    "thumbnailAlignment": "center",
+                    "gallerySorting": "random"
+            }'>
+                    {% for shiny in pokemon.shinies %}
+                        {% for picture in shiny.pictures %}
+                            <a href="{{ picture.url }}" data-ngthumb="{{ picture.url }}">
+                        {% endfor %}
+                    {% endfor %}
+            </div>
+        {% else %}
+
+            <p>Pas de photos encore!</p>
+
+        {% endif %}
+    </div>
+
+    <p>
+      <a href="{{ path('sh_shiny_dex') }}" class="btn btn-default">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour
+      </a>
+    </p>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/js/jquery-3.2.1.min.js' ) }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/DataTables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/Nanogallery2/jquery.nanogallery2.core.js' ) }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#table-users').DataTable( {
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                }
+            } );
+        });
+    </script>
+{% endblock %}

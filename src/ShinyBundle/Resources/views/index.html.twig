@@ -1,0 +1,18 @@
+{# src/ShinyBundle/Resources/views/index.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }} - Recensement
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Recensement</h2>
+            <p>Ici vous pouvez trouver tous les shinies de la communauté ShinysHunters!</p>
+            <p><a class="btn btn-primary btn-lg" href="{{ path('sh_shiny_add') }}" role="button"> Déclarer un shiny</a></p>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{# src/SH/NewsBundle/Resources/view/shinydex.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/shiny.css' ) }}"/>
+{% endblock %}
+
+{% block title %}
+  {{ parent() }} - Shinydex
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <h2>Shinydex</h2>
+    </div>
+
+    <div id="list-pokemon" class="row col-lg-12">
+        {% for pokemon in allpokemon %}
+            {% if pokemon.shinies is not empty %}
+                <div class="col-md-3 shinydexbox">
+                    <div class="spritebox">
+                        <a href="{{ path('sh_shiny_pokemon', {'id': pokemon.id}) }}">
+                            <img class="img-responsive sprite" src="{{ asset(sprites[loop.index0].url) }}"/>
+                        </a>
+                        <div class="badge">{{ pokemon.shinies|length }}</div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-md-3 shinydexbox">
+                    <div class="spritebox nofound">
+                        <a href="{{ path('sh_shiny_pokemon', {'id': pokemon.id}) }}">
+                            <img class="img-responsive sprite" src="{{ asset(sprites[loop.index0].url) }}"/>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="scroller-status">
+        <div class="infinite-scroll-request loader-ellips">
+
+        </div>
+
+        <p>
+            <a href="{{ path('sh_shiny') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Retour
+            </a>
+        </p>
+    </div>
+
+
+    <ul class="pagination">
+        {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+        {#{% for p in range(1, nbPages) %}#}
+            {#<li{% if p == page %} class="active"{% endif %}>#}
+                {#<a href="{{ path('sh_shiny_dex', {'page': p}) }}">{{ p }}</a>#}
+            {#</li>#}
+        {#{% endfor %}#}
+        <a class="pagination__next" href="{{ path('sh_shiny_dex', { 'page': page+1 }) }}">">Next page</a>
+    </ul>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
+
+    <script type="text/javascript">
+        $('#list-pokemon').infiniteScroll({
+            path: '.pagination__next',
+            append: '.shinydexbox',
+            status: '.scroller-status',
+            hideNav: '.pagination'
+        });
+    </script>
+{% endblock %}

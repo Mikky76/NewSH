@@ -1,0 +1,30 @@
+{# src/ShinyBundle/Resources/views/edit.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Modifier un shiny - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Modification du Shiny</h2>
+
+  {% for label, flashes in app.session.flashbag.all %}
+    {% for flash in flashes %}
+      <div class="alert alert-{{ label }}">
+        {{ flash }}
+      </div>
+    {% endfor %}
+  {% endfor %}
+
+  {{ include("ShinyBundle:recensement:form.html.twig") }}
+
+  <p>
+    <a href="{{ referer }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour
+    </a>
+  </p>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{# src/SH/NewsBundle/Resources/view/collection.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/shiny.css' ) }}"/>
+{% endblock %}
+
+{% block title %}
+  {{ parent() }} - Mes shinies
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h2>Mes shinies
+            <a class="btn btn-primary btn-sm" href="{{ path('sh_shiny_add') }}"><span class="glyphicon glyphicon-plus"></span></a>
+        </h2>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            {% for shiny in collection %}
+                <div class="col-md-3">
+                    <div class="shinybox">
+                        <a href="{{ path('sh_shiny_edit', {'id': shiny.id}) }}" class="pull-left">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a href="{{ path('sh_shiny_delete', {'id': shiny.id}) }}" class="pull-right">
+                            <span class="glyphicon glyphicon-trash danger"></span>
+                        </a>
+                        <a href="{{ path('sh_shiny_view', {'id': shiny.id}) }}">
+                            <div class="spritebox">
+                                    <img src="{{ asset(sprites[loop.index0].url) }}" class="img-responsive sprite"/>
+                            </div>
+                            <div class="shinybottom">
+                                <p class="label label-{{ shiny.methode.name }}">{{ shiny.methode.name }}</p>
+                                <h4><img src="{{ asset(shiny.pokeball.url) }}" class="ball"/>{{ shiny.pokemon.name }}</h4>
+                                <p>Capturé le {{ shiny.date|date('d/m/Y') }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

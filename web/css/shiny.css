@@ -1,0 +1,82 @@
+.slides img {
+    max-height: 300px;
+}
+
+.shinybox {
+    position: absolute;
+    background-color:#ffffff;
+    padding:10px;
+    margin:5px 0;
+    border: 1px solid #cfcfcf;
+    -moz-box-shadow: 2px 2px 4px 0px #cfcfcf;
+    -webkit-box-shadow: 2px 2px 4px 0px #cfcfcf;
+    -o-box-shadow: 2px 2px 4px 0px #cfcfcf;
+    box-shadow: 2px 2px 4px 0px #cfcfcf;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#cfcfcf, Direction=134, Strength=4);
+}
+.shinybox a{
+    text-decoration:none;
+    color: black;
+}
+.shinybox a:hover{
+    color: orangered;
+}
+.shinydexbox {
+    background-color:#ffffff;
+    padding:10px;
+    margin:5px 0;
+}
+.spritebox{
+    height: 120px;
+    width: 180px;
+    display: table-cell;
+    vertical-align: middle;
+    background: url(../media/img/sprites/pokemon-fond-2.png) no-repeat center;
+    background-size: contain;
+    text-align: center;
+}
+
+.sprite{
+    max-height: 100px;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shinybottom{
+    margin-top: 2px;
+    border-top:1px solid #dadada;
+    text-align: center;
+}
+
+.nofound{
+    filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+    -moz-filter: grayscale(1);
+    -o-filter: grayscale(1);
+    -ms-filter: grayscale(1);
+}
+
+.badge{
+    background-color: #ffc900;
+}
+
+table, th{
+    text-align: center;
+}
+.label{
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.label-Hasard{
+    background-color: #0b58a2;
+}
+.label-Rencontres{
+    background-color: green;
+}
+#videos img{
+    width: 400px;
+}

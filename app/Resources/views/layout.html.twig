@@ -11,15 +11,19 @@
   {% block stylesheets %}
     {# On charge le CSS de bootstrap depuis le site directement #}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-    {% stylesheets 'bundles/news/css/main.css' %}
+    {% stylesheets 'css/main.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
     {% endstylesheets %}
   {% endblock %}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>
-  <header class="container">
+    {############################################################
+    ############## HEADER
+    #############################################################}
+
+    <header class="container">
         <div class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -27,15 +31,26 @@
                 </div>
 
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="{{ path('sh_home') }}"><span class="glyphicon glyphicon-home"></span> Actualité</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-star"></span> Recensement</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Events</a></li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-home"></span> Site <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('sh_home') }}"> Accueil</a></li>
+                            <li><a href="{{ path('sh_core_static', {'namestatic': 'Histoire'}) }}"> Histoire</a></li>
+                            <li><a href="{{ path('sh_core_static', {'namestatic': 'Contact'}) }}"> Contact</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ path('sh_shiny') }}"><span class="glyphicon glyphicon-star"></span> Recensement</a></li>
+                    <li><a href="http://shinyshunters.fr-bb.com/"><span class="glyphicon glyphicon glyphicon-comment"></span> Forum</a></li>
                 </ul>
+
+
                 <ul class="nav navbar-nav navbar-right">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <li class="dropdown">
                             <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }} <b class="caret"></b></a>
                             <ul class="dropdown-menu">
+                                <li><a href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+                                <li><a href="{{ path('sh_shiny_collection') }}"><span class="glyphicon glyphicon-star"></span> Ma collection</a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
                             </ul>
                         </li>
@@ -48,25 +63,36 @@
         </div>
     </header>
 
+    {############################################################
+    ############## CONTENT
+    #############################################################}
     <div class="container">
+        <div id="content" class="col-md-9">
+            {% block body %}
+            {% endblock %}
+        </div>
 
-            <div id="content" class="col-md-10">
-                {% block body %}
-                {% endblock %}
+        <div class="col-md-3">
+            <div>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fshinyshunters&tabs=timeline&width=250&height=400&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"  width="250" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+            </div>
+            <div class="text-center">
+                <a class="twitter-timeline" data-lang="fr" data-chrome="noscrollbar nofooter noheader noborders"  data-height="200" data-dnt="true" data-theme="dark" data-link-color="#E81C4F" href="https://twitter.com/Shinys_Hunters"></a>
+                <a href="https://twitter.com/shinys_hunters" class="twitter-follow-button" data-lang="fr" data-size="large" data-dnt="true" data-show-count="false"></a>
             </div>
 
-            <div class="col-sm-2">
-                <a class="twitter-timeline" data-width="300" data-height="400" data-dnt="false" data-theme="dark" data-link-color="#E81C4F" href="https://twitter.com/Shinys_Hunters">Tweets by Shinys_Hunters</a>
-                <a href="https://twitter.com/shinys_hunters" class="twitter-follow-button" data-size="large" data-dnt="true" data-show-count="false">Suivez @shinys_hunters</a>
-            </div>
         </div>
     </div>
-    <footer class="row">
+
+    {############################################################
+    ############## FOOTER
+    #############################################################}
+
+    <footer class="container">
         <div class="col-lg-12">
-            The sky's the limit © {{ 'now'|date('Y') }} and beyond.
+            Pokémon est une marque de Nintendo, Creatures, GAME FREAK et The Pokémon Company.
         </div>
     </footer>
-
 
 
   {% block javascripts %}

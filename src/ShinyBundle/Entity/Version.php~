@@ -1,0 +1,65 @@
+<?php
+
+namespace ShinyBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Version
+ *
+ * @ORM\Table(name="version")
+ * @ORM\Entity(repositoryClass="ShinyBundle\Repository\VersionRepository")
+ */
+class Version
+{
+    /**
+     * @ORM\ManyToOne(targetEntity="ShinyBundle\Entity\Generation", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $generation;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="ShinyBundle\Entity\Location", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $locations;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="ShinyBundle\Entity\Methode", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $methodes;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, unique=true)
+     */
+    private $name;
+
+    /*************************************************************************************************
+     * Constructor.
+     *************************************************************************************************/
+    public function __construct()
+    {
+        $this->locations   = new ArrayCollection();
+        $this->methodes   = new ArrayCollection();
+    }
+
+    /*************************************************************************************************
+     * Getters & Setters
+     *************************************************************************************************/
+
+
+
+}

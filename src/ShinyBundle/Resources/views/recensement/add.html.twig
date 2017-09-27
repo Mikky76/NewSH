@@ -1,0 +1,35 @@
+{# src/ShinyBundle/Resources/views/add.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('bundles/scdatetimepicker/css/datetimepicker.css') }}" media="screen">
+{% endblock %}
+
+{% block title %}
+  {{ parent() }} - Ajouter un shiny
+{% endblock %}
+
+{% block body %}
+
+  <h2>Ajouter un Shiny</h2>
+
+  {% for label, flashes in app.session.flashbag.all %}
+    {% for flash in flashes %}
+      <div class="alert alert-{{ label }}">
+        {{ flash }}
+      </div>
+    {% endfor %}
+  {% endfor %}
+
+  {{ include("ShinyBundle:recensement:form.html.twig") }}
+
+  <p>
+    <a href="{{ referer }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour
+    </a>
+  </p>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{# src/CoreBundle/Resources/view/static.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} -
+{% endblock %}
+
+{% block body %}
+
+    <hr>
+
+    <h2>{{ staticpage.namePage }}</h2>
+
+    <p>
+        {{ staticpage.content | raw }}
+    </p>
+
+    {% if is_granted("ROLE_AUTOR") %}
+        <p>
+            <a href="{{ path('sh_core_edit_static', {'namestatic': staticpage.namePage}) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-edit"></i>
+                Editer
+            </a>
+        </p>
+    {% endif %}
+
+{% endblock %}
