@@ -4,6 +4,7 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -26,6 +27,19 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="date_register", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $date_register;
+
+    public function __construct()
+    {
+        // Par défaut, la date d'inscription est la date d'aujourd'hui
+        $this->date_register = new \Datetime();
+    }
 
     /**
      * Add shiny
@@ -59,5 +73,29 @@ class User extends BaseUser
     public function getShinies()
     {
         return $this->shinies;
+    }
+
+    /**
+     * Set dateRegister
+     *
+     * @param \DateTime $dateRegister
+     *
+     * @return User
+     */
+    public function setDateRegister($dateRegister)
+    {
+        $this->date_register = $dateRegister;
+
+        return $this;
+    }
+
+    /**
+     * Get dateRegister
+     *
+     * @return \DateTime
+     */
+    public function getDateRegister()
+    {
+        return $this->date_register;
     }
 }

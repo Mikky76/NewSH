@@ -1,0 +1,59 @@
+{% extends "UserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="row user-infos cyruxx">
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Profil</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3">
+                            <img class="img-circle img-responsive"
+                                 src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100"
+                                 alt="User Pic"/>
+                        </div>
+                        <div class=" col-md-9 col-lg-9">
+                            <strong>{{ user.username }}</strong><br>
+                            <table class="table table-user-information">
+                                <tbody>
+                                <tr>
+                                    <td>Mail:</td>
+                                    <td>{{ user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date d'inscription:</td>
+                                    <td>{{ user.dateRegister|date("m/d/Y") }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nombre de shinies</td>
+                                    <td>{{ user.shinies|length }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a href="{{ path('fos_user_change_password') }}">
+                        <button class="btn btn-sm btn-primary" type="button" data-toggle="tooltip"><i class="glyphicon glyphicon-retweet"></i>
+                            Modifier mot de passe
+                        </button>
+                    </a>
+                    <span class="pull-right">
+                        <a href="{{ path('fos_user_profile_edit') }}">
+                            <button class="btn btn-sm btn-warning" type="button" data-toggle="tooltip" data-original-title="Edit this user">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock fos_user_content %}

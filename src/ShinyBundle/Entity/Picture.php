@@ -33,6 +33,7 @@ class Picture
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255, unique=true)
+     * @Assert\Url()
      */
     private $url;
 

@@ -7,8 +7,9 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
         
     role_hierarchy:
+        ROLE_MODERATOR: ROLE_USER
         # Un admin hérite des droits d'auteur et de modérateur
-        ROLE_ADMIN:       [ROLE_AUTOR, ROLE_MODERATOR]
+        ROLE_ADMIN:       [ROLE_USER, ROLE_MODERATOR]
         # On garde ce rôle superadmin, il nous resservira par la suite
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
     

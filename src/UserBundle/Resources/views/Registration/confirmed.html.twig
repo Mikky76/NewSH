@@ -1,0 +1,35 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if targetUrl %}
+    {% set Url = targetUrl %}
+{% else %}
+    {% set Url = path("sh_home") %}
+{% endif %}
+
+{% block fos_user_content %}
+    <div class="alert alert-success">
+        <p><strong>Bienvenue</strong> {{ user.username }} sur ShinysHunters! </p>
+    </div>
+
+    {% if targetUrl %}
+        <div class="alert alert-info">
+            <p>Vous allez être redirigé dans quelques secondes vers la page <strong>{{ Url }}</strong></p>
+        </div>
+    {% else %}
+
+        <div class="alert alert-info">
+            <p>Vous allez être redirigé dans quelques secondes vers la page d'accueil.</p>
+        </div>
+    {% endif %}
+
+{% endblock fos_user_content %}
+
+{% block javascripts %}
+        {{ parent() }}
+    {{ Url }}
+    <script type="text/javascript">
+        window.setTimeout("location=('{{ Url }}');",5000); // delai en millisecondes
+    </script>
+{% endblock %}

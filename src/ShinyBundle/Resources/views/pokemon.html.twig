@@ -52,16 +52,22 @@
                 <th>Versions</th>
                 <th>Méthodes</th>
                 <th>Nombres</th>
+                <th>Lien</th>
             </tr>
             </thead>
             <tbody>
             {% for shiny in pokemon.shinies %}
-                <tr>
-                    <td>{{ shiny.user }}</td>
-                    <td>{{ shiny.version.name }}</td>
-                    <td>{{ shiny.methode.name }}</td>
-                    <td>{{ shiny.number }}</td>
-                </tr>
+
+                    <tr>
+                        <td>{{ shiny.user }}</td>
+                        <td>{{ shiny.version.name }}</td>
+                        <td>{{ shiny.methode.name }}</td>
+                        <td>{{ shiny.number }}</td>
+                        <td><a href="{{ path('sh_shiny_view', {'id': shiny.id}) }}">
+                                <i class=" glyphicon glyphicon-search"></i>
+                            </a></td>
+                    </tr>
+
             {% endfor %}
             </tbody>
        </table>

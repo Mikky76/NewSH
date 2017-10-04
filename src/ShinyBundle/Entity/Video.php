@@ -3,6 +3,8 @@
 namespace ShinyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Video
@@ -31,6 +33,7 @@ class Video
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255, unique=true)
+     *  @Assert\Url()
      */
     private $url;
 

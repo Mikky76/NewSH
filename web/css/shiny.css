@@ -3,9 +3,10 @@
 }
 
 .shinybox {
-    position: absolute;
+    height: 250px;
+    width: 190px;
     background-color:#ffffff;
-    padding:10px;
+    padding:5px;
     margin:5px 0;
     border: 1px solid #cfcfcf;
     -moz-box-shadow: 2px 2px 4px 0px #cfcfcf;

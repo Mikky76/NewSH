@@ -1,4 +1,4 @@
-{# src/SH/NewsBundle/Resources/view/News/view.html.twig #}
+{# src/SH/NewsBundle/Resources/view/recensement/view.html.twig #}
 
 {% extends "::layout.html.twig" %}
 
@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent() }} - {{ shiny.pokemon.name }} de {{ shiny.user }}
+    SH - {{ shiny.pokemon.name }} de {{ shiny.user }}
 {% endblock %}
 
 {% block body %}
@@ -24,12 +24,15 @@
     {% endfor %}
     
     <h2>{{ shiny.pokemon.name }} <small><i>de {{ shiny.user }}</i></small>
-        <a href="{{ path('sh_shiny_delete', {'id': shiny.id}) }}" class="btn btn-danger pull-right">
-            <span class="glyphicon glyphicon-trash"></span>
-        </a>
-        <a href="{{ path('sh_shiny_edit', {'id': shiny.id}) }}" class="btn btn-default pull-right">
-            <span class="glyphicon glyphicon-edit"></span>
-        </a>
+
+        {% if app.user and shiny.isTrainer(app.user) %}
+            <a href="{{ path('sh_shiny_delete', {'id': shiny.id}) }}" class="btn btn-danger pull-right">
+                <span class="glyphicon glyphicon-trash"></span>
+            </a>
+            <a href="{{ path('sh_shiny_edit', {'id': shiny.id}) }}" class="btn btn-default pull-right">
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+        {% endif %}
     </h2>
 
     <div class="row col-lg-12">

@@ -1,0 +1,14 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+    <div class="alert alert-warning">{{ exception.message|nl2br|format_file_from_text }}</div>
+
+    <p>
+        <a href="{{ path('sh_shiny') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à l'accueil
+        </a>
+    </p>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+
+{% extends "UserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'form-horizontal col-md-6 col-md-offset-3'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <h4>Inscription</h4>
+    <div class="form-group">
+        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Pseudo'}}) }}
+        {{ form_errors(form.username) }}
+        {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
+        {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder': 'Confirmation mot de passe'}}) }}
+        {{ form_errors(form.plainPassword) }}
+    </div>
+    {{ form_widget(form) }}
+
+    <div>
+        <input class="btn btn-md btn-primary" type="submit" value="Créer votre compte" />
+    </div>
+    {{ form_end(form) }}
+{% endblock fos_user_content %}

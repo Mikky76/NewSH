@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use UserBundle\Entity\User;
 
 /**
  * shiny
@@ -528,5 +529,20 @@ class Shiny
     public function getVideos()
     {
         return $this->videos;
+    }
+
+    /**
+     * Vérification du dresseur
+     *
+     * @return bool
+     */
+    public function isTrainer(User $user = null)
+    {
+        if($user->getUsername() === $this->getUser()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

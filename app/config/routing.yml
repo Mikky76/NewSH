@@ -8,10 +8,10 @@ sh_home:
     type:     annotation
     prefix:   /
 
-sh_news:
-    resource: "@NewsBundle/Controller/"
-    type:     annotation
-    prefix:   /news
+#sh_news:
+#    resource: "@NewsBundle/Controller/"
+#    type:     annotation
+#    prefix:   /news
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

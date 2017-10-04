@@ -10,8 +10,11 @@
 
   {% block stylesheets %}
     {# On charge le CSS de bootstrap depuis le site directement #}
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    {% stylesheets 'css/main.css' %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {#<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">#}
+    {% stylesheets filter='cssrewrite, ?scssphp'
+        'css/main.css'
+    %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
     {% endstylesheets %}
   {% endblock %}
@@ -51,17 +54,23 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
                                 <li><a href="{{ path('sh_shiny_collection') }}"><span class="glyphicon glyphicon-star"></span> Ma collection</a></li>
+                                <li class="divider"></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
                             </ul>
                         </li>
                     {% else %}
                         <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Inscription</a></li>
-                        <li><a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-log-in"></span> Connexion </a></li>
+                        <li><a href="" data-toggle="modal" data-target="#modal_login"><span class="glyphicon glyphicon-log-in"></span> Connexion </a></li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </header>
+
+    {############################################################
+    ############## Ajout formulaire connexion/inscription
+    #############################################################}
+            {{ render (controller('UserBundle:User:loginModal'))  }}
 
     {############################################################
     ############## CONTENT
@@ -96,9 +105,8 @@
 
 
   {% block javascripts %}
-    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   {% endblock %}
 

@@ -17,8 +17,9 @@
             <a class="btn btn-primary btn-sm" href="{{ path('sh_shiny_add') }}"><span class="glyphicon glyphicon-plus"></span></a>
         </h2>
     </div>
-    <div class="container-fluid">
-        <div class="row">
+
+    <div class="row col-lg-12">
+        {% if collection|length > 0 %}
             {% for shiny in collection %}
                 <div class="col-md-3">
                     <div class="shinybox">
@@ -41,6 +42,9 @@
                     </div>
                 </div>
             {% endfor %}
-        </div>
+        {% else %}
+            <p> Vous n'avez pas encore de pokémon chromatiques déclarés.
+                Vous pouvez en déclarer un en cliquant sur le bouton "+" au dessus.</p>
+        {% endif %}
     </div>
 {% endblock %}

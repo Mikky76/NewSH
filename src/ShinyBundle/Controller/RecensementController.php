@@ -29,7 +29,7 @@ class RecensementController extends Controller
 
         // Vérification que le Shiny existe bien
         if (null === $shiny) {
-            throw $this->createNotFoundException("La shiny d'id ".$id." n'existe pas.");
+            throw $this->createNotFoundException("Ce Pokémon chromatique n'existe pas.");
         }
 
         return $this->render('ShinyBundle:recensement:view.html.twig', array(
@@ -90,6 +90,8 @@ class RecensementController extends Controller
 
         if ($shiny == null) {
             throw $this->createNotFoundException("Le shiny ".$id." n'existe pas!");
+        }elseif (!$shiny->isTrainer($this->getUser())){
+            throw $this->createNotFoundException("Vous n'êtes pas le dresseur de ce pokémon shiny!");
         }
 
         //Création d'une collection de nos photos et de nos videos de la base de données
@@ -165,6 +167,8 @@ class RecensementController extends Controller
         // Si la shiny n'existe pas, on affiche une erreur 404
         if ($shiny == null) {
             throw $this->createNotFoundException("Le shiny d'id ".$id." n'existe pas.");
+        }elseif (!$shiny->isTrainer($this->getUser())){
+            throw $this->createNotFoundException("Vous n'êtes pas le dresseur de ce pokémon shiny!");
         }
 
         // Formulaire vide qui ne contiendra que le champ CSRF
@@ -201,6 +205,8 @@ class RecensementController extends Controller
             ->getManager()
             ->getRepository('ShinyBundle:Sprite')
         ;
+
+        $sprites = null;
 
         foreach ($collection as $shiny) {
             $sprites[] = $repository->findOneBy(
