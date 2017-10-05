@@ -2,6 +2,8 @@
 
 namespace ShinyBundle\Repository;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * ShinyRepository
  *

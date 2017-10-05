@@ -56,7 +56,7 @@ class CoreController extends Controller
         $em = $this->getDoctrine()->getManager();
         $staticpage = $em->getRepository('CoreBundle:Staticpage')->findOneByNamePage($namestatic);
         
-        if ($staticpage == null) {
+        if ($staticpage === null) {
             throw $this->createNotFoundException("La page ".$staticpage." n'existe pas.");
         }
 
