@@ -88,7 +88,7 @@ class RecensementController extends Controller
         $em = $this->getDoctrine()->getManager();
         $shiny = $em->getRepository('ShinyBundle:Shiny')->find($id);
 
-        if ($shiny == null) {
+        if ($shiny === null) {
             throw $this->createNotFoundException("Le shiny ".$id." n'existe pas!");
         }elseif (!$shiny->isTrainer($this->getUser())){
             throw $this->createNotFoundException("Vous n'êtes pas le dresseur de ce pokémon shiny!");
@@ -165,7 +165,7 @@ class RecensementController extends Controller
         $shiny = $em->getRepository('ShinyBundle:Shiny')->find($id);
 
         // Si la shiny n'existe pas, on affiche une erreur 404
-        if ($shiny == null) {
+        if ($shiny === null) {
             throw $this->createNotFoundException("Le shiny d'id ".$id." n'existe pas.");
         }elseif (!$shiny->isTrainer($this->getUser())){
             throw $this->createNotFoundException("Vous n'êtes pas le dresseur de ce pokémon shiny!");

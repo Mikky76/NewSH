@@ -11,6 +11,5 @@ class NewsEditType extends NewsType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 		Parent::buildForm($builder, $options);
-//        $builder->remove('date');
     }
 }

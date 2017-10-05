@@ -1,5 +1,6 @@
 {
-    "name": "mdouc/new-sh",
+    "name": "Colt/NewSH",
+    "description": "Nouveau site Shinyshunters.fr",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -29,14 +30,14 @@
         "incenteev/composer-parameter-handler": "^2.0",
 		"doctrine/doctrine-fixtures-bundle": "2.3",
 		"stof/doctrine-extensions-bundle": "1.2.2",
-		"friendsofsymfony/user-bundle": "dev-master",
+		"friendsofsymfony/user-bundle": "~2.0",
         "liip/imagine-bundle": "^1.5",
         "egeloen/ckeditor-bundle": "^4.0",
         "symfony/assetic-bundle": "^2.7.1",
         "leafo/scssphp": "~0.6",
         "patchwork/jsqueeze": "~1.0",
         "bmatzner/jquery-ui-bundle": "*",
-        "stephanecollot/datetimepicker-bundle": "dev-master"
+        "stephanecollot/datetimepicker-bundle": "2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

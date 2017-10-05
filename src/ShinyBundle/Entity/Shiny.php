@@ -479,9 +479,6 @@ class Shiny
     public function removePicture(\ShinyBundle\Entity\Picture $picture)
     {
         $this->pictures->removeElement($picture);
-
-        //Relation facultative (nullable=true)
-//        $picture->setShiny(null);
     }
 
     /**

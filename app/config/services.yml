@@ -2,6 +2,7 @@
 # http://symfony.com/doc/current/book/service_container.html
 parameters:
 #    parameter_name: value
+    secret_recaptcha: 6Ld7ozEUAAAAAFd4AV0NsPhaKteL0icd-Bajt8g_
 
 services:
     shiny.recaptcha:

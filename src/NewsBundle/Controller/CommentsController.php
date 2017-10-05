@@ -33,7 +33,6 @@ class CommentsController    extends Controller
 		$user = $this->getUser();
 		$comment->setAuthor($user);
 
-//		$comment->setIp($this->request->server->get('REMOTE_ADDR'));
 		$comment->setIp($request->getClientIp());
 
 		$form = $this->createForm(CommentType::class, $comment);
@@ -67,7 +66,7 @@ class CommentsController    extends Controller
 		$form = $this->createFormBuilder()->getForm();
 
 		// Si le commentaire n'existe pas, on affiche une erreur 404
-		if ($comment == null) {
+		if ($comment === null) {
 		  throw $this->createNotFoundException("Commentaire d'id ".$id." n'existe pas.");
 		}
 

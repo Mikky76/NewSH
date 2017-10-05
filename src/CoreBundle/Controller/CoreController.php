@@ -34,7 +34,6 @@ class CoreController extends Controller
      */
     public function staticAction($namestatic)
     {
-        //$namestatic = 'Histoire';
         $em = $this->getDoctrine()->getManager();
         $staticpage = $em->getRepository('CoreBundle:Staticpage')->findOneByNamePage($namestatic);
 

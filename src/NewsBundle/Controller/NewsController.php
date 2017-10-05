@@ -133,7 +133,7 @@ class NewsController  extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$news = $em->getRepository('NewsBundle:News')->find($id);
 
-		if ($news == null) {
+		if ($news === null) {
 		  throw $this->createNotFoundException("La News ".$id." n'existe pas.");
 		}
 		
@@ -165,7 +165,7 @@ class NewsController  extends Controller
 		$news = $em->getRepository('NewsBundle:News')->find($id);
 
 		// Si la News n'existe pas, on affiche une erreur 404
-		if ($news == null) {
+		if ($news === null) {
 		  throw $this->createNotFoundException("La News d'id ".$id." n'existe pas.");
 		}
 
